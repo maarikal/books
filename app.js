@@ -33,11 +33,65 @@ function deleteBook(event) {
             event.target.parentElement.parentElement.remove();
             // saaksid kontrollida nii, et võtad console.log(event.target.parentElement.parentElement) - et näha, mida taha hakkab kustutama; saab ka nt event.target.parentElement või event.target
             let bookTitle = event.target.parentElement.parentElement.firstChild.textContent;
-            let bookISBN = event.target.parentElement
-            console.log(bookTitle);
+            //let bookISBN = event.target.parentElement
+            //console.log(bookTitle);
+            //console.log(bookISBN);
+            deleteBookFromLocalStrorage(bookTitle);
             }
         }
 }
+
+function deleteBookFromLocalStorage(bookTitle) {
+    let books;
+    if(localStorage.getItem("books") === null) {
+        books = [];
+    } else {
+        books =JSON.parse(localStorage.getItem("books"));
+    }
+    for (let i = 0; i < books.length; i++) {
+        let book = book[i];
+        if(book[0] === bookTitle) {
+            books.splice(i, 1);  // slice kustutab kindlas kohas massiivis andmed, siin siis kohal i ja ainult 1 elemendi
+        }
+    }
+    console.log(books);
+    localStorage.setItem("books", JSON.stringify(books));
+}
+/* KUSTUTAMINE ISBN koodi järgi
+function deleteBookFromLocalStorage(bookISBN) {
+    let books;
+    if(localStorage.getItem("books") === null) {
+        books = [];
+    } else {
+        books =JSON.parse(localStorage.getItem("books"));
+    }
+    for (let i = 0; i < books.length; i++) {
+        let book = book[i];
+        if(book[2] === bookISBN) {
+            books.splice(i, 1);  // slice kustutab kindlas kohas massiivis andmed, siin siis kohal i ja ainult 1 elemendi
+        }
+    }
+    console.log(books);
+    localStorage.setItem("books", JSON.stringify(books));
+} */
+
+/* KUSTUTAMINE ISBN koodi järgi ja forEach()'iga
+function deleteBookFromLocalStorage(bookISBN) {
+    let books;
+    if(localStorage.getItem("books") === null) {
+        books = [];
+    } else {
+        books =JSON.parse(localStorage.getItem("books"));
+    }
+    books.forEach(function (value, index) {
+        if(book[2] === bookISBN) {
+            books.splice(index, 1);
+        }
+    }
+    console.log(books);
+    localStorage.setItem("books", JSON.stringify(books));
+} */
+
 
 
 //console.log(form) -- trükib brauseri konsooli, et mis real on form olemas
