@@ -1,52 +1,64 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Books</title>
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <title>Books</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
 </head>
-
-<!-- Anna GitHubi fail, kuna jäin maha eelmises tunnis ning nuppu ja loetelu mul ei ole sellist enda failis index.html, et saaks edasi teha JS-i-->
-
 <body>
-<div class="container">
-    <!-- Page Content goes here -->
+
+<div class="container" >
+    <h1> <span class="purple-text text-darken-4">Raamatupood </span> </h1>
+
     <div class="row">
-        <div class="col s12">
-            <h2>Tasks</h2>
+        <form class="red lighten-5 indigo-text col s12">
+            <div class="h3">
+                <h3><span class="purple-text">Lisa raamat</span></h3>
+            </div>
+
             <div class="row">
-                <div class="col s12">
-                    <div class="card">
-                        <div class="card-content">
-                            <span class="card-title">Add Book</span>
-                            <div class="row">
-                                <form class="col s12">
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input id="task" type="text">
-                                            <label for="task">New Task</label>
-                                        </div>
-                                    </div>
-                                    <input type="submit" value="Add Task" class="btn">
-                                </form>
-                            </div>
-                        </div>
-                        <div class="card-action">
-                            <h4>Tasks</h4>
-                            <ul class="collection">
-                            </ul>
-                            <a href="#" class="btn" id="delete-tasks"> Delete All Tasks </a>
-                        </div>
-                    </div>
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">book</i>
+                    <input id="raamatuNimi" type="text" class="validate">
+                    <label for="raamatuNimi"> Raamatu nimi </label>
                 </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">person</i>
+                    <input id="raamatuAutor" type="text" class="validate">
+                    <label for="raamatuAutor"> Raamatu autor</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">fingerprint</i>
+                    <input id="ISBN" type="text" class="validate">
+                    <label for="ISBN"> ISBN </label>
+                </div>
+            </div>
+
+            <button class="btn-floating purple col s12" type="submit" name="action">Lisa
+            </button>
+        </form>
     </div>
+    <br>
+    <div class="h3">
+        <h3><span class="purple-text">Lisatud raamatute nimekiri</span></h3>
+        <ul class="collection"> </ul>
+    </div>
+
 </div>
+
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="app.js"></script>
