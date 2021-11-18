@@ -28,33 +28,48 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">book</i>
-                    <input id="raamatuNimi" type="text" class="validate">
+                    <input id="raamatuNimi" type="text">
                     <label for="raamatuNimi"> Raamatu nimi </label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">person</i>
-                    <input id="raamatuAutor" type="text" class="validate">
+                    <input id="raamatuAutor" type="text">
                     <label for="raamatuAutor"> Raamatu autor</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">fingerprint</i>
-                    <input id="ISBN" type="text" class="validate">
+                    <input id="ISBN" type="text">
                     <label for="ISBN"> ISBN </label>
                 </div>
             </div>
 
-            <button class="btn-floating purple col s12" type="submit" name="action">Lisa
-            </button>
+            <input class="btn-floating purple col s12" type="submit" value="Lisa">
         </form>
     </div>
     <br>
     <div class="h3">
         <h3><span class="purple-text">Lisatud raamatute nimekiri</span></h3>
-        <ul class="collection"> </ul>
+        <table class="centered">
+            <thead>
+            <tr>
+                <th>Raamatu nimi</th>
+                <th>Raamatu autor</th>
+                <th>ISBN kood</th>
+                <th>Eemalda </th>
+            </tr>
+            </thead>
+
+            <tbody id="nimekiri">
+            </tbody>
+        </table>
+        <br>
+        <div class="center">
+            <a href="#" class="btn purple" id="delete-books"> Kustuta kõik raamatud</a>
+        </div>
     </div>
 
 </div>
