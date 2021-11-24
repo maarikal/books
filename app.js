@@ -44,9 +44,12 @@ function addBook(event) {
 
 
 function deleteBook(event) {
-    if(event.target.textContent == "X") {
+    if(event.target.textContent === "X") {
         if(confirm("Do you want to delete this book?")) {
             event.target.parentElement.remove();
+
+            let ISBN = event.target.parentElement.children[2].textContent;
+            deleteBookFromLocalStorage(ISBN);
         }
     }
 }
@@ -71,4 +74,20 @@ function addBookToLocalStorage(raamat) {
    books.push(raamat);
     localStorage.setItem("books", JSON.stringify(books));
     console.log(books);
+}
+
+
+function deleteBookFromLocalStorage(ISBN) {
+    let books;
+    if(localStorage.getItem("books") === null) {
+        books = [];
+    }   else {
+        books = JSON.parse(localStorage.getItem("books"));
+    }
+    books.forEach(function (ISBNValue, index) {
+        if(ISBNValue[2] === ISBN) {
+            books.splice(index, 1)
+        }
+    })
+    localStorage.setItem("books", JSON.stringify(books));
 }
