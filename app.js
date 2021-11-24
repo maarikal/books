@@ -8,6 +8,7 @@ const deleteAllBooks = document.querySelector("#delete-books");
 form.addEventListener("submit", addBook);
 bookInput.addEventListener("click", deleteBook);
 deleteAllBooks.addEventListener("click", deleteBooks);
+document.addEventListener("DOMContentLoaded", getBooksFromLocalStorage);
 
 
 function addBook(event) {
@@ -48,8 +49,8 @@ function deleteBook(event) {
         if(confirm("Do you want to delete this book?")) {
             event.target.parentElement.remove();
 
-            let ISBN = event.target.parentElement.children[2].textContent;
-            deleteBookFromLocalStorage(ISBN);
+        let ISBN = event.target.parentElement.children[2].textContent;
+        deleteBookFromLocalStorage(ISBN);
         }
     }
 }
@@ -102,3 +103,35 @@ function deleteAllBooksFromLocalStorage() {
     }
     localStorage.removeItem("books");
 }
+
+
+function getBooksFromLocalStorage() {
+    let books;
+    if(localStorage.getItem("books") === null) {
+        books = [];
+    }   else {
+        books = JSON.parse(localStorage.getItem("books"));
+    }
+    for (let i=0; i< books.length; i++) {
+        let book = books[i]
+        const tr = document.createElement("tr");
+       // const raamat = [raamatuNimi, raamatuAutor, ISBN];
+
+        for(let i=0; i<book.length; i++) {
+            let td = document.createElement("td");
+            let tekst = document.createTextNode(book[i]);
+            td.appendChild(tekst);
+            tr.appendChild(td);
+            tr.appendChild(td);
+        }
+        td = document.createElement("td");
+        const link = document.createElement("a");
+        link.setAttribute("href", "#");
+        //link.className = "secondary-content";
+        link.appendChild(document.createTextNode("X"));
+        td.appendChild(link);
+        tr.appendChild(td);
+        bookInput.appendChild(tr);
+    }
+}
+
