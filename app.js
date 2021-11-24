@@ -33,6 +33,9 @@ function addBook(event) {
     link.className = "secondary-content";
     link.appendChild(document.createTextNode("X"));  // loome kustutamise nupu (X-i)
     tr.appendChild(link);
+
+    addBookToLocalStorage(raamat);
+
     bookNameInput.value = "";
     bookAuthorInput.value = "";
     bookIsbnInput.value = ""; // teeme sisetuse kastid (ehk input väljad) tühjaks pärast iga sisestust
@@ -55,4 +58,17 @@ function deleteBooks() {
             bookInput.removeChild(bookInput.firstChild);
         }
     }
+}
+
+
+function addBookToLocalStorage(raamat) {
+    let books;
+    if(localStorage.getItem("books") === null) {
+        books = [];
+    }   else {
+        books = JSON.parse(localStorage.getItem("books"));
+    }
+   books.push(raamat);
+    localStorage.setItem("books", JSON.stringify(books));
+    console.log(books);
 }
