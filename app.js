@@ -61,6 +61,7 @@ function deleteBooks() {
             bookInput.removeChild(bookInput.firstChild);
         }
     }
+    deleteAllBooksFromLocalStorage();
 }
 
 
@@ -90,4 +91,14 @@ function deleteBookFromLocalStorage(ISBN) {
         }
     })
     localStorage.setItem("books", JSON.stringify(books));
+}
+
+
+function deleteAllBooksFromLocalStorage() {
+    let books;
+    if (localStorage.getItem("books") === null) {
+        books = [];
+        localStorage.setItem("tasks", JSON.stringify(books)); //
+    }
+    localStorage.removeItem("books");
 }
